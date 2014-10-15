@@ -6,6 +6,7 @@
 package com.american.doors.test;
 
 import com.american.doors.model.Proyectos;
+import java.io.InputStream;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -26,10 +27,11 @@ public class TestConnection {
     public static void main(String[] args) {
         
         try {
+            String g = TestConnection.class.getResource("/com/american/doors/config/log4j.xml").getPath();
             
-            DOMConfigurator.configure("src/main/resources/com/american/doors/config/log4j.xml");
+            DOMConfigurator.configure(g);
             log.info("Log4j Configured using XML configurator"); 
-            log.info("prueba");
+           
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
             EntityManager em = factory.createEntityManager();
             
